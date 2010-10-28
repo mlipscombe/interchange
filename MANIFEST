@@ -1132,6 +1132,7 @@ lib/Vend/Options.pm
 lib/Vend/Options/Matrix.pm
 lib/Vend/Options/Old48.pm
 lib/Vend/Options/Simple.pm
+lib/Vend/Options/Multi.pm
 lib/Vend/Order.pm
 lib/Vend/Page.pm
 lib/Vend/Parse.pm
@@ -1144,6 +1145,7 @@ lib/Vend/Payment/ECHO.pm
 lib/Vend/Payment/EFSNet.pm
 lib/Vend/Payment/Ezic.pm
 lib/Vend/Payment/Getitcard.pm
+lib/Vend/Payment/Google.pm
 lib/Vend/Payment/GoogleCheckout.pm
 lib/Vend/Payment/ICS.pm
 lib/Vend/Payment/iTransact.pm
