@@ -620,7 +620,7 @@ sub encrypt_standard_cc {
 	}
 
 	unless ($valid = luhn($num) || $force ) {
-		my $msg = errmsg("Credit card number fails LUHN-10 check.");
+		my $msg = errmsg("Credit card number is not a valid number.");
 		$Vend::Session->{errors}{mv_credit_card_valid} = $msg;
 		push @return, $msg;
 		return @return;
