@@ -307,7 +307,9 @@ sub parse_cgi {
 		if ($CGI::content_type =~ m{^(?:multipart/form-data|application/x-www-form-urlencoded|application/xml|application/json)\b}i) {
 			parse_post(\$CGI::query_string, 1)
 				if $Global::TolerateGet;
-			parse_post($h->{entity});
+			if($CGI::content_type !~ m{^(application/xml)\b}i) {
+				parse_post($h->{entity});
+			}
 		}
 		else {
 			## invalid content type for POST
