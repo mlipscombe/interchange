@@ -1357,11 +1357,11 @@ if($opt->{debug}) {
 
     $opt->{encoded} = encode($opt->{value}, $ESCAPE_CHARS::std);
 	if($opt->{display_filter}) {
-		my $newv = Vend::Interpolate::filter_value(
+		$opt->{value} = Vend::Interpolate::filter_value(
 								$opt->{display_filter},
 								$opt->{value},
 							);
-		$opt->{filtered} = encode($newv, $ESCAPE_CHARS::std);
+		$opt->{filtered} = encode($opt->{value}, $ESCAPE_CHARS::std);
 	}
     $opt->{value} =~ s/&#91;/\[/g if $opt->{enable_itl};
 
