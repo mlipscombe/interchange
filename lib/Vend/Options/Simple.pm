@@ -218,6 +218,9 @@ sub display_options {
 		if($opt->{blank_label}) {
 			$passed = "=$opt->{blank_label}, $passed";
 		}
+		if($opt->{break}) {
+			$precursor .= "&nbsp;";
+		}
 		push @out, $precursor . Vend::Interpolate::tag_accessories(
 						$sku,
 						'',
@@ -235,9 +238,13 @@ sub display_options {
 							height => $opt->{height} || $ref->[HEIGHT],
 							width  => $opt->{width} || $ref->[WIDTH],
 							type => $opt->{type} || $ref->[WIDGET] || 'select',
+							display_filter => 'entities',
 						},
 						$item || undef,
 					);
+		if($opt->{break}) {
+			push @out, $opt->{break};
+		}
 	}
 	if($opt->{td}) {
 		for(@out) {

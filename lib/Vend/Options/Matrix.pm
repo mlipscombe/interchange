@@ -77,7 +77,7 @@ use vars qw/%Default/;
 				table => 'options',
 				sort => 'o_sort',
 				variant_table => 'variants',
-				variant_sort => 'description',
+				variant_sort => 'sort,description',
 			);
 
 my $Admin_page;
@@ -255,6 +255,7 @@ sub display_options {
 				    height => $opt->{height} || $ref->[SEP_HEIGHT],
 				    width  => $opt->{width} || $ref->[SEP_WIDTH],
 				    type => $opt->{type} || $ref->[SEP_WIDGET] || 'select',
+				    display_filter => 'entities',
 				},
 				$item || undef,
 				);
@@ -374,6 +375,7 @@ sub display_options {
 								price => $opt->{price},
 								price_data => $price,
 								type => $opt->{type} || 'select',
+								display_filter => 'entities',
 							},
 							$item || undef,
 						);
