@@ -3401,7 +3401,7 @@ sub set_default_search {
 			my $o = $C->{Options_repository} ||= {};
 			my $var = $C->{Variable};
 
-			my @base = qw/Simple Matrix Old48/;
+			my @base = qw/Simple Matrix Old48 Multi/;
 			my %base;
 			@base{@base} = @base;
 
