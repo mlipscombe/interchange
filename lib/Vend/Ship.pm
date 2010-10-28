@@ -774,6 +774,7 @@ sub shipping {
 				logError($error_message);
 				last SHIPIT;
 			}
+			last SHIPIT unless (defined $cost && $cost >= 0);
 			$final += $cost;
 			last SHIPIT unless $o->{continue};
 		}
@@ -1088,15 +1089,17 @@ sub tag_shipping {
 		### If no assignment has been made, we read the shipmodes
 		### and use their value
 		unless (defined $out) {
-			$out = 0;
 			for(@modes) {
-				$out += shipping($_, $opt) || 0;
+				my $m = shipping($_, $opt);
+				if (defined $m) { $out += $m; }
 			}
 		}
-		$out = Vend::Util::round_to_frac_digits($out);
-		## Conversion would have been done above, force to 0, as
-		## found by Frederic Steinfels
-		$out = currency($out, $opt->{noformat}, 0, $opt);
+		if(defined $out) {
+			$out = Vend::Util::round_to_frac_digits($out);
+			## Conversion would have been done above, force to 0, as
+			## found by Frederic Steinfels
+			$out = currency($out, $opt->{noformat}, 0, $opt);
+		}
 	}
 	return $out unless $opt->{hide};
 	return;
